@@ -12,23 +12,22 @@ class ProductTest < ActiveSupport::TestCase
   	assert product.errors[:image_url].any?
   end
 
-  test "product price must be positive" do   
-  	product = Product.new(title:       "My Book Title",
-  	                      description: "yyy", 
-  	 		                  image_url:   "zzz.jpg")   
-  	product.price = -1   
-  	assert product.invalid?   
-  	assert_equal ["must be greater than or equal to 0.01"],     
-  		product.errors[:price]
-  	
-  	product.price = 0
-  	assert product.invalid?
-  	assert_equal ["must be greater than or equal to 0.01"],
-  		product.errors[:price]
-		
-		product.price = 1
-		assert product.valid?
+  test "product price must be positive" do
+    product = Product.new(title:       "My Book Title",
+                          description: "yyy",
+                          image_url:   "zzz.jpg")
+    product.price = -1
+    assert product.invalid?
+    assert_equal ["must be greater than or equal to 0.01"],
+      product.errors[:price]
 
+    product.price = 0
+    assert product.invalid?
+    assert_equal ["must be greater than or equal to 0.01"], 
+      product.errors[:price]
+
+    product.price = 1
+    assert product.valid?
   end
 
   def new_product(image_url)
@@ -39,7 +38,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "image url" do
-  	ok = %w{ fred.gif fred.jpg, fred.png FRED.JPG FRED.jpg
+  	ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.jpg
   						http://a.b.c/x/y/z/fred.gif }
   	bad = %w{	fred.doc	fred.gif/more		fred.gif.more	}
   	ok.each do |name|
@@ -63,14 +62,14 @@ class ProductTest < ActiveSupport::TestCase
 
   end
 
-  test "product it not valid without a unique title - il8n" do
+  test "product it not valid without a unique title - i18n" do
   	
   	product = Product.new(title:  		 products(:ruby).title,
   												description: "yyy",
   												price:       1,
   												image_url: 	 "fred.gif")
   	assert product.invalid?
-  	assert_equal [Il8n.translate('errors.messages.taken')], 
+  	assert_equal [I18n.translate('errors.messages.taken')], 
   	              product.errors[:title]
 
   end
