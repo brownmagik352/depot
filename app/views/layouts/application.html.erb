@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
+  <title>Pragprog Books Online Store</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%=controller.controller_name %>'>
+				<div id="banner">
+								<%= image_tag("logo.png") %>
+								<%= @page_title || "Pragmatic Bookshelf" %>
+				</div>
 
-<%= yield %>
+				<div id = "columns">
+								<div id="side">
+												<p class="timeinfo"> <%= Date.today.strftime('%A, %B %d, %Y') %> </p>
+												<p class="timeinfo"> <%= Time.now.strftime('%I:%M %p') %> </p>
+												<ul>
+																<li><a href="google.com">Home</a></li>
+																<li><a href="espn.com">Questions</a></li>
+																<li><a href="msn.com">News</a></li>
+																<li><a href="ask.com">Contact</a></li>
+												</ul>
+								</div>
+								<div id="main">
+												<%= yield %>
+								</div>
+				</div>
 
 </body>
 </html>
