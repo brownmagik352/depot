@@ -10,6 +10,8 @@
 				<div id="banner">
 								<%= image_tag("logo.png") %>
 								<%= @page_title || "Pragmatic Bookshelf" %>
+								<h6> <%= @shown_message %> </h6>
+
 				</div>
 
 				<div id = "columns">
@@ -17,7 +19,7 @@
 												<p class="timeinfo"> <%= Date.today.strftime('%A, %B %d, %Y') %> </p>
 												<p class="timeinfo"> <%= Time.now.strftime('%I:%M %p') %> </p>
 												<ul>
-																<li><a href="google.com">Home</a></li>
+																<li><a href="http://localhost:3000/">Home</a></li>
 																<li><a href="espn.com">Questions</a></li>
 																<li><a href="msn.com">News</a></li>
 																<li><a href="ask.com">Contact</a></li>
