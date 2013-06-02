@@ -18,8 +18,13 @@
 								<div id="side">
 												<p class="timeinfo"> <%= Date.today.strftime('%A, %B %d, %Y') %> </p>
 												<p class="timeinfo"> <%= Time.now.strftime('%I:%M %p') %> </p>
-												<ul>
-																<li><a href="http://localhost:3000/">Home</a></li>
+												<% if @cart %>
+													<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+													<%= render @cart %>
+													<% end %>
+												<% end %>
+												
+												<ul> <li><a href="http://localhost:3000/">Home</a></li>
 																<li><a href="espn.com">Questions</a></li>
 																<li><a href="msn.com">News</a></li>
 																<li><a href="ask.com">Contact</a></li>
